@@ -4,18 +4,6 @@ title: Hello World!
 published: true
 ---
 
-<script>
-  var linkElement = document.createElement("link");
-  linkElement.rel = "stylesheet";
-  linkElement.href = "https://interactiveaudiolab.github.io/nussl-blog/css/css/screen.css";
-
-  document.head.appendChild(linkElement);  
-</script>
-
-<script src="https://interactiveaudiolab.github.io/nussl-blog/js/jquery.min.js"></script>
-<script src="https://interactiveaudiolab.github.io/nussl-blog/js/player.js"></script>
-
-
 
 Hello World! We are happy to present the _nussl blog_, wherein we will provide a tutorial on many of the blind source separation algorithms contained within the Northwestern University Source Separation Library (`nussl`), an open-source source separation package. Usually, the blog posts will have code sprinkled throughout them, to root the concepts in real-world examples. But before we proceed onto explanations of the algorithms, we’d like to spend this post defining what “blind source separation” is and why it’s important. 
 
@@ -23,11 +11,19 @@ Hello World! We are happy to present the _nussl blog_, wherein we will provide a
 
 ![Source separation is the process of extracting individual components of an auditory scene.]({{site.baseurl}}/_posts/overview.png)
 
+<iframe>
+
+<link rel="stylesheet" href="https://interactiveaudiolab.github.io/nussl-blog/css/css/screen.css">
+<script src="https://interactiveaudiolab.github.io/nussl-blog/js/jquery.min.js"></script>
+<script src="https://interactiveaudiolab.github.io/nussl-blog/js/player.js"></script>
+
 <div class='audio-container'  name='Source Separation Example'>
   <audio name="first source" url="./data/sample.ogg"></audio>
   <audio name="second source" url="./data/sample.ogg"></audio>
   <audio name="third source" url="./data/sample.ogg"></audio>
 </div>
+
+</iframe>
 
 In general, audio source separation is the process of trying to extract an individual sonic “_stream_” from its surrounding auditory scene. An example of this is extracting the sound of a single person talking when you’re in a crowded cocktail party, or focusing on the guitar solo when the entire band is also playing. The object of interest that we try to extract is called a source (e.g., the single person talking, or the guitar solo) and its surrounding auditory scene (e.g. the cocktail party, or full band playing) is called the mixture. 
 
@@ -104,6 +100,3 @@ So now we’ve laid some groundwork for what source separation is and why it’s
 [2] Bregman, Albert S. Auditory scene analysis: The perceptual organization of sound. MIT press, 1994.
 
 [3] We leave it to the combinatorics experts to figure out how many possible integer pair solutions there are within a 16-bit space.
-
-
-
