@@ -4,13 +4,30 @@ title: Hello World!
 published: true
 ---
 
+<script>
+  var linkElement = document.createElement("link");
+  linkElement.rel = "stylesheet";
+  linkElement.href = "./css/css/screen.css";
+
+  document.head.appendChild(linkElement);  
+</script>
+
+<script src="https://interactiveaudiolab.github.io/nussl-blog/js/jquery.min.js"></script>
+<script src="https://interactiveaudiolab.github.io/nussl-blog/js/player.js"></script>
+
+
+
 Hello World! We are happy to present the _nussl blog_, wherein we will provide a tutorial on many of the blind source separation algorithms contained within the Northwestern University Source Separation Library (`nussl`), an open-source source separation package. Usually, the blog posts will have code sprinkled throughout them, to root the concepts in real-world examples. But before we proceed onto explanations of the algorithms, we’d like to spend this post defining what “blind source separation” is and why it’s important. 
 
 ## What is Blind Source Separation?
 
-[[IMG]]
+![Source separation is the process of extracting individual components of an auditory scene.]({{site.baseurl}}/_posts/overview.png)
 
-[[DEMO]]
+<div class='audio-container'  name='Source Separation Example'>
+  <audio name="first source" url="./data/sample.ogg"></audio>
+  <audio name="second source" url="./data/sample.ogg"></audio>
+  <audio name="third source" url="./data/sample.ogg"></audio>
+</div>
 
 In general, audio source separation is the process of trying to extract an individual sonic “_stream_” from its surrounding auditory scene. An example of this is extracting the sound of a single person talking when you’re in a crowded cocktail party, or focusing on the guitar solo when the entire band is also playing. The object of interest that we try to extract is called a source (e.g., the single person talking, or the guitar solo) and its surrounding auditory scene (e.g. the cocktail party, or full band playing) is called the mixture. 
 
@@ -34,11 +51,14 @@ Possibly the best non-living-animal way to do (non-blind) source separation is t
 
 If you don’t have a multi-million-dollar recording studio, you can do source separation (and localization) with a process called [beamforming](https://en.wikipedia.org/wiki/Beamforming), which is where you have many microphones (called microphone arrays; the Amazon Echo has 7) and use slight differences in time-of-arrival between microphones to determine location of a sound and therefore a source. Beamforming happens in real-time, and requires a microphone array where the position of each microphone is known. But not all recordings were created with microphone arrays, and in fact almost all music was not. Furthermore, every single sound that has been analyzed by your brain has been input from just two microphones on the side of your head (your ears). When there are more streams than microphones, this is a situation we call _underdetermined_ source separation. This situation is ubiquitous and poses a very hard problem to solve. Most of the algorithms we put in `nussl` are for the underdetermined case.
 
-To illustrate how difficult the problem actually is, let’s step back and take a gander at what an audio mixture actually is. Sound is a psychological response to very quick changes in air pressure and displacement. The way sound is captured by a computer is by using a microphone to turn those air pressure changes into voltage, and then using a chip to turn those voltages into numbers that a computer can read, store, manipulate, play back, etc.
+To illustrate how difficult the problem actually is, let’s step back and take a gander at what an audio mixture actually is. The phenomenon that we call sound is a succession of very rapid changes in air pressure and displacement.
 
-[[IMG 2]]
+![Sound is quick changes in air pressure.]({{site.baseurl}}/_posts/sound.png)
 
-[[IMG 3]]
+The way sound is captured by a computer is by using a microphone to turn those air pressure changes into voltage, and then using a chip to turn those voltages into numbers that a computer can read, store, manipulate, play back, etc.
+
+![Sound is stored in a computer as a series of numbers that correspond to air pressure.]({{site.baseurl}}/_posts/adc.png)
+
 
 Once the sound is in the computer, it is stored as an array of numbers. We can think of this as a function, _f_ [_t_], that outputs a value at a given discreet-valued timestep, _t_. So the sound pictured above is stored as such:
 
@@ -87,6 +107,3 @@ So now we’ve laid some groundwork for what source separation is and why it’s
 
 
 
-
-
-![_config.yml]({{ site.baseurl }}/images/config.png)
