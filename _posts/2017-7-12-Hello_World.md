@@ -10,10 +10,12 @@ Hello World! We are happy to present the _nussl blog_, wherein we will provide a
 
 ![Source separation is the process of extracting individual components of an auditory scene.]({{site.baseurl}}/_posts/overview.png)
 
-Here's a little demo of a mixture with isolated sources. Click the play button to hear the full mixture and click the circles next to the track names ("Bass", "guitar", etc) to hear the sources in isolation.
+Here's a little demo of a mixture with isolated sources:
 
 <iframe height="350" width="100%" src="https://interactiveaudiolab.github.io/nussl-blog/examples/hello_world_player.html" seemless>
 </iframe>
+
+Click the play button to hear the full mixture and click the circles next to the track names ("Bass", "guitar", etc) to hear the sources in isolation, or click the speaker with the X to mute that channel. (This is an exceprt from a MIDI version of [Vulfpeck's Dean Town](https://www.youtube.com/watch?v=le0BLAEO93g).)
 
 In general, audio source separation is the process of trying to extract an individual sonic _"stream"_ from its surrounding auditory scene. An example of this is extracting the sound of a single person talking when you’re in a crowded cocktail party, or focusing on the guitar solo when the entire band is also playing. The object of interest that we try to extract is called a source (e.g., the single person talking, or the guitar solo) and its surrounding auditory scene (e.g. the cocktail party, or full band playing) is called the mixture. 
 
