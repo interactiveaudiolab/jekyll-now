@@ -4,7 +4,7 @@ title: Hello World!
 published: true
 ---
 
-TEST 1
+TEST 2
 
 Hello World! We are happy to present the _nussl blog_, wherein we will provide a tutorial on many of the blind source separation algorithms contained within the Northwestern University Source Separation Library (`nussl`), an open-source source separation package. Usually, the blog posts will have code sprinkled throughout them, to root the concepts in real-world examples. But before we proceed onto explanations of the algorithms, we’d like to spend this post defining what “blind source separation” is and why it’s important. 
 
@@ -12,7 +12,7 @@ Hello World! We are happy to present the _nussl blog_, wherein we will provide a
 
 ![Source separation is the process of extracting individual components of an auditory scene.]({{site.baseurl}}/_posts/overview.png)
 
-<iframe>
+<iframe height="100" width="100%">
 
 <link rel="stylesheet" href="https://interactiveaudiolab.github.io/nussl-blog/css/css/screen.css">
 <script src="https://interactiveaudiolab.github.io/nussl-blog/js/jquery.min.js"></script>
