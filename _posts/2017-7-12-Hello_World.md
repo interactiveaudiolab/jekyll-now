@@ -12,7 +12,7 @@ Hello World! We are happy to present the _nussl blog_, wherein we will provide a
 
 Here's a little demo of a mixture with isolated sources:
 
-<iframe height="350" width="100%" src="https://interactiveaudiolab.github.io/nussl-blog/examples/hello_world_player.html" seemless>
+<iframe height="275" width="100%" src="https://interactiveaudiolab.github.io/nussl-blog/examples/hello_world_player.html" seemless>
 </iframe>
 
 Click the play button to hear the full mixture and click the circles next to the track names ("Bass", "guitar", etc) to hear the sources in isolation, or click the speaker with the X to mute that channel. (This is an exceprt from a MIDI version of [Vulfpeck's Dean Town](https://www.youtube.com/watch?v=le0BLAEO93g).)
