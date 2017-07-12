@@ -7,7 +7,7 @@ published: true
 <script>
   var linkElement = document.createElement("link");
   linkElement.rel = "stylesheet";
-  linkElement.href = "./css/css/screen.css";
+  linkElement.href = "https://interactiveaudiolab.github.io/nussl-blog/css/css/screen.css";
 
   document.head.appendChild(linkElement);  
 </script>
