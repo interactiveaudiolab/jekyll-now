@@ -4,7 +4,7 @@ title: Hello World!
 published: true
 ---
 
-TEST 7
+TEST 8
 
 Hello World! We are happy to present the _nussl blog_, wherein we will provide a tutorial on many of the blind source separation algorithms contained within the Northwestern University Source Separation Library (`nussl`), an open-source source separation package. Usually, the blog posts will have code sprinkled throughout them, to root the concepts in real-world examples. But before we proceed onto explanations of the algorithms, we’d like to spend this post defining what “blind source separation” is and why it’s important. 
 
@@ -12,17 +12,17 @@ Hello World! We are happy to present the _nussl blog_, wherein we will provide a
 
 ![Source separation is the process of extracting individual components of an auditory scene.]({{site.baseurl}}/_posts/overview.png)
 
-<iframe height=250 width="100%" src="https://interactiveaudiolab.github.io/nussl-blog/examples/hello_world_player.html">
+<iframe height="250" width="100%" src="https://interactiveaudiolab.github.io/nussl-blog/examples/hello_world_player.html">
 </iframe>
 
-In general, audio source separation is the process of trying to extract an individual sonic “_stream_” from its surrounding auditory scene. An example of this is extracting the sound of a single person talking when you’re in a crowded cocktail party, or focusing on the guitar solo when the entire band is also playing. The object of interest that we try to extract is called a source (e.g., the single person talking, or the guitar solo) and its surrounding auditory scene (e.g. the cocktail party, or full band playing) is called the mixture. 
+In general, audio source separation is the process of trying to extract an individual sonic _"stream"_ from its surrounding auditory scene. An example of this is extracting the sound of a single person talking when you’re in a crowded cocktail party, or focusing on the guitar solo when the entire band is also playing. The object of interest that we try to extract is called a source (e.g., the single person talking, or the guitar solo) and its surrounding auditory scene (e.g. the cocktail party, or full band playing) is called the mixture. 
 
 
 When we have no information about how the mixture was recorded or about what the sources sound like, we call the process of doing source separation, _Blind_[1] Source Separation or BSS. When researchers say “source separation” they are often referring to blind source separation. Likewise, in this blog, you can assume that, when I say source separation, I really mean blind source separation (unless otherwise noted).
 
 ## What is a stream? What is a source?
 
-Above, I refer to individual sonic “_streams_”[2]; by “_stream_” I mean a set of connected auditory events. Consider for a second, a trail of footsteps, or even a sentence. The trail is made up of discreet footprints all facing the same way, but a detective can determine the direction in which a criminal left by examining them. Similarly, none of the individual words in this sentence can capture the meaning of the entire sentence, you can only understand the sentence’s meaning when all of these words are arranged in exactly this way. The same holds true for audio. A single note is just a note, but many notes ordered in a particular way can create a violin solo, or back beat. A phoneme by itself means less than the array of phonemes that create the word “houseboat.” 
+Above, I refer to individual sonic _"streams"_[2]; by _"stream"_ I mean a set of connected auditory events. Consider for a second, a trail of footsteps, or even a sentence. The trail is made up of discreet footprints all facing the same way, but a detective can determine the direction in which a criminal left by examining them. Similarly, none of the individual words in this sentence can capture the meaning of the entire sentence, you can only understand the sentence’s meaning when all of these words are arranged in exactly this way. The same holds true for audio. A single note is just a note, but many notes ordered in a particular way can create a violin solo, or back beat. A phoneme by itself means less than the array of phonemes that create the word “houseboat.” 
 
 Streams become important when we closely examine what a **source** _is_ and what it _is not_. From this vantage point, the definition of “a source” is ill-defined because it may contain many different streams. For instance, the guitar playing the solo seems like a single source, while the bass player and drummer are also individual sources, but what if the song has a lead singer and harmonies sung by three background singers? Are the all singers one source just like the bass player, drummer, and guitar player are each one source? Is the lead singer one source and the three background singers collectively make one “background singer” source? Are each of the background singers an individual source? What if this song is playing on the radio at the cocktail party? Then the radio might be a source, and each individual talker might be a source too. I could go on and on and on…
 
