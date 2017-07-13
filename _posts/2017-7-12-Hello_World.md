@@ -94,6 +94,6 @@ So now we’ve laid some groundwork for what source separation is and why it’s
 
 [2] The irony of calling an auditory process “blind” is not lost on this researcher.
 
-[3] Bregman, Albert S. Auditory scene analysis: The perceptual organization of sound. MIT press, 1994.
+[3] Bregman, Albert S. _Auditory scene analysis: The perceptual organization of sound_. MIT press, 1994.
 
 [4] We leave it to the combinatorics experts to figure out how many possible integer pair solutions there are within a 16-bit space.
