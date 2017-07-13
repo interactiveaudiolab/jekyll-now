@@ -8,9 +8,9 @@ Hello World! We are happy to present the _nussl blog_, wherein we will provide a
 
 ## What is Blind Source Separation?
 
-![Source separation is the process of extracting individual components of an auditory scene.]({{site.baseurl}}/_posts/overview.png)
+![Source separation is the process of extracting individual components of an auditory scene.](https://interactiveaudiolab.github.io/nussl-blog/_posts/overview.png)
 
-Here's a little demo of a mixture with isolated sources:
+Here's a little demo of a mixture with isolated sources [1]:
 
 <iframe height="275" width="100%" src="https://interactiveaudiolab.github.io/nussl-blog/examples/hello_world_player.html" seemless>
 </iframe>
@@ -20,11 +20,11 @@ Click the play button to hear the full mixture and click the circles next to the
 In general, audio source separation is the process of trying to extract an individual sonic _"stream"_ from its surrounding auditory scene. An example of this is extracting the sound of a single person talking when you’re in a crowded cocktail party, or focusing on the guitar solo when the entire band is also playing. The object of interest that we try to extract is called a source (e.g., the single person talking, or the guitar solo) and its surrounding auditory scene (e.g. the cocktail party, or full band playing) is called the mixture. 
 
 
-When we have no information about how the mixture was recorded or about what the sources sound like, we call the process of doing source separation, _Blind_ [1] Source Separation or BSS. When researchers say “source separation” they are often referring to blind source separation. Likewise, in this blog, you can assume that, when I say source separation, I really mean blind source separation (unless otherwise noted).
+When we have no information about how the mixture was recorded or about what the sources sound like, we call the process of doing source separation, _Blind_ [2] Source Separation or BSS. When researchers say “source separation” they are often referring to blind source separation. Likewise, in this blog, you can assume that, when I say source separation, I really mean blind source separation (unless otherwise noted).
 
 ## What is a stream? What is a source?
 
-Above, I refer to individual sonic _"streams"_[2]; by _"stream"_ I mean a set of connected auditory events. Consider for a second, a trail of footsteps, or even a sentence. The trail is made up of discreet footprints all facing the same way, but a detective can determine the direction in which a criminal left by examining them. Similarly, none of the individual words in this sentence can capture the meaning of the entire sentence, you can only understand the sentence’s meaning when all of these words are arranged in exactly this way. The same holds true for audio. A single note is just a note, but many notes ordered in a particular way can create a violin solo, or back beat. A phoneme by itself means less than the array of phonemes that create the word “houseboat.” 
+Above, I refer to individual sonic _"streams"_[3]; by _"stream"_ I mean a set of connected auditory events. Consider for a second, a trail of footsteps, or even a sentence. The trail is made up of discreet footprints all facing the same way, but a detective can determine the direction in which a criminal left by examining them. Similarly, none of the individual words in this sentence can capture the meaning of the entire sentence, you can only understand the sentence’s meaning when all of these words are arranged in exactly this way. The same holds true for audio. A single note is just a note, but many notes ordered in a particular way can create a violin solo, or back beat. A phoneme by itself means less than the array of phonemes that create the word “houseboat.” 
 
 Streams become important when we closely examine what a **source** _is_ and what it _is not_. From this vantage point, the definition of “a source” is ill-defined because it may contain many different streams. For instance, the guitar playing the solo seems like a single source, while the bass player and drummer are also individual sources, but what if the song has a lead singer and harmonies sung by three background singers? Are the all singers one source just like the bass player, drummer, and guitar player are each one source? Is the lead singer one source and the three background singers collectively make one “background singer” source? Are each of the background singers an individual source? What if this song is playing on the radio at the cocktail party? Then the radio might be a source, and each individual talker might be a source too. I could go on and on and on…
 
@@ -41,11 +41,11 @@ If you don’t have a multi-million-dollar recording studio, you can do source s
 
 To illustrate how difficult the problem actually is, let’s step back and take a gander at what an audio mixture actually is. The phenomenon that we call sound is a succession of very rapid changes in air pressure and displacement.
 
-![Sound is quick changes in air pressure.]({{site.baseurl}}/_posts/sound.png)
+![Sound is quick changes in air pressure.](https://interactiveaudiolab.github.io/nussl-blog/_posts/sound.png)
 
 The way sound is captured by a computer is by using a microphone to turn those air pressure changes into voltage, and then using a chip to turn those voltages into numbers that a computer can read, store, manipulate, play back, etc.
 
-![Sound is stored in a computer as a series of numbers that correspond to air pressure.]({{site.baseurl}}/_posts/adc.png)
+![Sound is stored in a computer as a series of numbers that correspond to air pressure.](https://interactiveaudiolab.github.io/nussl-blog/_posts/adc.png)
 
 
 Once the sound is in the computer, it is stored as an array of numbers. We can think of this as a function, _f_ [_t_], that outputs a value at a given discreet-valued timestep, _t_. So the sound pictured above is stored as such:
@@ -86,9 +86,10 @@ So now we’ve laid some groundwork for what source separation is and why it’s
 <br />
 <br />
 
+[1] Web player by [Bastien Liutkus](http://www.binarymind.org) from [here](https://github.com/binarymind/multitrackHTMLPlayer).
 
-[1] The irony of calling an auditory process “blind” is not lost on this researcher.
+[2] The irony of calling an auditory process “blind” is not lost on this researcher.
 
-[2] Bregman, Albert S. Auditory scene analysis: The perceptual organization of sound. MIT press, 1994.
+[3] Bregman, Albert S. Auditory scene analysis: The perceptual organization of sound. MIT press, 1994.
 
-[3] We leave it to the combinatorics experts to figure out how many possible integer pair solutions there are within a 16-bit space.
+[4] We leave it to the combinatorics experts to figure out how many possible integer pair solutions there are within a 16-bit space.
