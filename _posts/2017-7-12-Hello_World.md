@@ -19,7 +19,7 @@ Here's a little demo of a mixture with isolated sources [1]:
 <iframe height="275" width="100%" src="https://interactiveaudiolab.github.io/nussl-blog/examples/hello_world_player.html" seemless>
 </iframe>
 
-Click the play button to hear the full mixture and click the circles next to the track names ("Bass", "guitar", etc) to hear the sources in isolation, or click the speaker with the X to mute that channel. (This is an exceprt from a MIDI version of [Vulfpeck's Dean Town](https://www.youtube.com/watch?v=le0BLAEO93g).)
+Click the play button to hear the full mixture and click the circles next to the track names ("Bass", "Guitar", etc) to hear the sources in isolation, or click the speaker with the X to mute that channel. (This is an excerpt from a MIDI version of [Vulfpeck's Dean Town](https://www.youtube.com/watch?v=le0BLAEO93g).)
 
 In general, audio source separation is the process of trying to extract an individual sonic _"stream"_ from its surrounding auditory scene. An example of this is extracting the sound of a single person talking when you’re in a crowded cocktail party, or focusing on the guitar solo when the entire band is also playing. The object of interest that we try to extract is called a source (e.g., the single person talking, or the guitar solo) and its surrounding auditory scene (e.g. the cocktail party, or full band playing) is called the mixture. 
 
@@ -52,19 +52,19 @@ The way sound is captured by a computer is by using a microphone to turn those a
 ![Sound is stored in a computer as a series of numbers that correspond to air pressure.](https://interactiveaudiolab.github.io/nussl-blog/_posts/adc.png)
 
 
-Once the sound is in the computer, it is stored as an array of numbers. We can think of this as a function, \(f [t]\), that outputs a value at a given discreet-valued timestep, \(t\). So the sound pictured above is stored as such:
+Once the sound is in the computer, it is stored as an array of numbers. We can think of this as a function, \\(f [t]\\), that outputs a value at a given discreet-valued timestep, \\(t\\). So the sound pictured above is stored as such:
 
-\[ f[t] = \{-1, 0, 1, 1, 3, 4, 3, ...\} \]
+\\[ f[t] = \\{-1, 0, 1, 1, 3, 4, 3, ...\\} \\]
 
-A mixture is a typically a linear combination of sounds with some mixing parameter that scales the sound and determines how loud the sound is. For instance, let’s say we have a mixture, \(m[t]\), is a combination of two sources, \(s_1[t]\) and \(s_2[t]\), with mixing parameters \(l_1\) and \(l_2\), respectively. Then \(m[t]\) is thusly:
+A mixture is a typically a linear combination of sounds with some mixing parameter that scales the sound and determines how loud the sound is. For instance, let’s say we have a mixture, \\(m[t]\\), is a combination of two sources, \\(s_1[t]\\) and \\(s_2[t]\\), with mixing parameters \\(l_1\\) and \\(l_2\\), respectively. Then \\(m[t]\\) is thusly:
 
-\[ m[t] = l_1 s_1[t] + l_2 s_2[t] \]
+\\[ m[t] = l_1 s_1[t] + l_2 s_2[t] \\]
 
-Where the both \(s_1[t]\) and \(s_2[t]\), have a similar shape as \(f [t]\). But we only know what the resultant mixture looks like:
+Where the both \\(s_1[t]\\) and \\(s_2[t]\\), have a similar shape as \\(f [t]\\). But we only know what the resultant mixture looks like:
 
-\[ m[t] = \{12, 85, 123, -6, -45, 3, ...\} \]
+\\[ m[t] = \\{12, 85, 123, -6, -45, 3, ...\\} \\]
 
-Now we get to the crux of the problem: how do we determine what \(s_1[t]\) and \(s_2[t]\) are when we only know what our mixture, \(m[t]\), is? This problem can be reduced by looking at the first value in the mixture, \(m[t=0] = 12\) and assume our mixing parameters are both 1. Now, we’re merely to trying to figure out what two (scaled) integers sum to 12, i.e., what are \(s_1[t=0]\) and \(s_2[t=0]\) such that \(s_1[0] + s_2[0] = 12\)? The number of possible pairs that sum to the value \(m[0]\) is infinite but only one pair is correct!
+Now we get to the crux of the problem: how do we determine what \\(s_1[t]\\) and \\(s_2[t]\\) are when we only know what our mixture, \\(m[t]\\), is? This problem can be reduced by looking at the first value in the mixture, \\(m[t=0] = 12\\) and assume our mixing parameters are both 1. Now, we’re merely to trying to figure out what two (scaled) integers sum to 12, i.e., what are \\(s_1[t=0]\\) and \\(s_2[t=0]\\) such that \\(s_1[0] + s_2[0] = 12\\)? The number of possible pairs that sum to the value \\(m[0]\\) is infinite but only one pair is correct!
 
 But uncompressed CD-quality audio is stored as 16-bit integers and sampled at 44.1 kHz. If we limit the range of possible values that our sources can be as such both sources are 16-bits, i.e., can be any value between [-32768, 32767][3]. So now our underdetermined source separation toy problem has moved away from the realm of the impossible and into the land of the prohibitively difficult. Keep in mind that once we figure out the right pair for t=0, we still have to find the correct pair for 44,099 other mixture values in order to separate a single second of our mixture! Additionally, we’re only trying to separate two sources; most music has more than two sources, and in that case, the problem becomes “what [3/4/5/…] numbers add up to X?” Clearly this is an impractical way to go about this problem.
 
