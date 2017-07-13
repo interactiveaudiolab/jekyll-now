@@ -12,7 +12,7 @@ Hello World! We are happy to present the _nussl blog_, wherein we will provide a
 
 ## What is Blind Source Separation?
 
-![Source separation is the process of extracting individual components of an auditory scene.](https://interactiveaudiolab.github.io/nussl-blog/_posts/overview.png)
+![Source separation is the process of extracting individual components of an auditory scene.](https://interactiveaudiolab.github.io/nussl-blog/images/overview.png)
 
 Here's a little demo of a mixture with isolated sources [1]:
 
@@ -45,11 +45,11 @@ If you don’t have a multi-million-dollar recording studio, you can do source s
 
 To illustrate how difficult the problem actually is, let’s step back and take a gander at what an audio mixture actually is. The phenomenon that we call sound is a succession of very rapid changes in air pressure and displacement.
 
-![Sound is quick changes in air pressure.](https://interactiveaudiolab.github.io/nussl-blog/_posts/sound.png)
+![Sound is quick changes in air pressure.](https://interactiveaudiolab.github.io/nussl-blog/images/sound.png)
 
 The way sound is captured by a computer is by using a microphone to turn those air pressure changes into voltage, and then using a chip to turn those voltages into numbers that a computer can read, store, manipulate, play back, etc.
 
-![Sound is stored in a computer as a series of numbers that correspond to air pressure.](https://interactiveaudiolab.github.io/nussl-blog/_posts/adc.png)
+![Sound is stored in a computer as a series of numbers that correspond to air pressure.](https://interactiveaudiolab.github.io/nussl-blog/images/adc.png)
 
 
 Once the sound is in the computer, it is stored as an array of numbers. We can think of this as a function, \\(f [t]\\), that outputs a value at a given discreet-valued timestep, \\(t\\). So the sound pictured above is stored as such:
