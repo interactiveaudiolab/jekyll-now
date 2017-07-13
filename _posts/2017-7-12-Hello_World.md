@@ -64,7 +64,7 @@ The way sound is captured by a computer is by using a microphone to turn those a
 
 Once the sound is in the computer, it is stored as an array of numbers. We can think of this as a function, \\(f [t]\\), that outputs a value at a given discreet-valued timestep, \\(t\\). So the sound pictured above is stored as such:
 
-$$ f[t] = \[-1, 0, 1, 1, 3, 4, 3, ...\] $$
+\\[ f[t] = \[-1, 0, 1, 1, 3, 4, 3, ...\] \\]
 
 A mixture is a typically a linear combination of sounds with some mixing parameter that scales the sound and determines how loud the sound is. For instance, let’s say we have a mixture, \\(m[t]\\), is a combination of two sources, \\(s_1[t]\\) and \\(s_2[t]\\), with mixing parameters \\(l_1\\) and \\(l_2\\), respectively. Then \\(m[t]\\) is thusly:
 
