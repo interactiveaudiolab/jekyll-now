@@ -4,6 +4,10 @@ title: Hello World!
 published: true
 ---
 
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
 Hello World! We are happy to present the _nussl blog_, wherein we will provide a tutorial on many of the blind source separation algorithms contained within the Northwestern University Source Separation Library (`nussl`), an open-source source separation package. Usually, the blog posts will have code sprinkled throughout them, to root the concepts in real-world examples. But before we proceed onto explanations of the algorithms, we’d like to spend this post defining what “blind source separation” is and why it’s important. 
 
 ## What is Blind Source Separation?
@@ -48,19 +52,19 @@ The way sound is captured by a computer is by using a microphone to turn those a
 ![Sound is stored in a computer as a series of numbers that correspond to air pressure.](https://interactiveaudiolab.github.io/nussl-blog/_posts/adc.png)
 
 
-Once the sound is in the computer, it is stored as an array of numbers. We can think of this as a function, _f_ [_t_], that outputs a value at a given discreet-valued timestep, _t_. So the sound pictured above is stored as such:
+Once the sound is in the computer, it is stored as an array of numbers. We can think of this as a function, \(f [t]\), that outputs a value at a given discreet-valued timestep, \(t\). So the sound pictured above is stored as such:
 
-[[EQ 1]]
+\[ f[t] = \{-1, 0, 1, 1, 3, 4, 3, ...\} \]
 
-A mixture is a typically a linear combination of sounds with some mixing parameter that scales the sound and determines how loud the sound is. For instance, let’s say we have a mixture, _m_[_t_], is a combination of two sources, _s<sub>1</sub>_[_t_] and _s<sub>2</sub>_[_t_], with mixing parameters _l<sub>1</sub>_ and _l<sub>2</sub>_, respectively. Then _m_[_t_] is thusly:
+A mixture is a typically a linear combination of sounds with some mixing parameter that scales the sound and determines how loud the sound is. For instance, let’s say we have a mixture, \(m[t]\), is a combination of two sources, \(s_1[t]\) and \(s_2[t]\), with mixing parameters \(l_1\) and \(l_2\), respectively. Then \(m[t]\) is thusly:
 
-[[EQ 2]]
+\[ m[t] = l_1 s_1[t] + l_2 s_2[t] \]
 
-Where the both _s<sub>1</sub>_[_t_] and _s<sub>2</sub>_[_t_], have a similar shape as _f_ [_t_]. But we only know what the resultant mixture looks like:
+Where the both \(s_1[t]\) and \(s_2[t]\), have a similar shape as \(f [t]\). But we only know what the resultant mixture looks like:
 
-[[EQ 3]]
+\[ m[t] = \{12, 85, 123, -6, -45, 3, ...\} \]
 
-Now we get to the crux of the problem: how do we determine what _s<sub>1</sub>_[_t_] and _s<sub>2</sub>_[_t_] are when we only know what our mixture, _m_[_t_], is? This problem can be reduced by looking at the first value in the mixture, _m_[_t_=0] = 12 and assume our mixing parameters are both 1. Now, we’re merely to trying to figure out what two (scaled) integers sum to 12, i.e., what are _s<sub>1</sub>_[_t_=0] and _s<sub>2</sub>_[_t_=0] such that _s<sub>1</sub>_[0] + _s<sub>2</sub>_[0] = 12? The number of possible pairs that sum to the value _m_[0] is infinite but only one pair is correct!
+Now we get to the crux of the problem: how do we determine what \(s_1[t]\) and \(s_2[t]\) are when we only know what our mixture, \(m[t]\), is? This problem can be reduced by looking at the first value in the mixture, \(m[t=0] = 12\) and assume our mixing parameters are both 1. Now, we’re merely to trying to figure out what two (scaled) integers sum to 12, i.e., what are \(s_1[t=0]\) and \(s_2[t=0]\) such that \(s_1[0] + s_2[0] = 12\)? The number of possible pairs that sum to the value \(m[0]\) is infinite but only one pair is correct!
 
 But uncompressed CD-quality audio is stored as 16-bit integers and sampled at 44.1 kHz. If we limit the range of possible values that our sources can be as such both sources are 16-bits, i.e., can be any value between [-32768, 32767][3]. So now our underdetermined source separation toy problem has moved away from the realm of the impossible and into the land of the prohibitively difficult. Keep in mind that once we figure out the right pair for t=0, we still have to find the correct pair for 44,099 other mixture values in order to separate a single second of our mixture! Additionally, we’re only trying to separate two sources; most music has more than two sources, and in that case, the problem becomes “what [3/4/5/…] numbers add up to X?” Clearly this is an impractical way to go about this problem.
 
