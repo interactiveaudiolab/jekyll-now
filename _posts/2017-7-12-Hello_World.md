@@ -14,7 +14,7 @@ Hello World! We are happy to present the _nussl blog_, wherein we will provide a
 
 ![Source separation is the process of extracting individual components of an auditory scene.]({{ site.baseurl }}/images/overview.png)
 
-Here's a little demo of a mixture with isolated sources [1]:
+Here's a little demo of a mixture with isolated sources <a id="footnote-1-ref" href="#footnote-1">[1]</a>:
 
 <iframe height="275" width="100%" src="https://interactiveaudiolab.github.io/nussl-blog/examples/hello_world_player.html" seemless>
 </iframe>
@@ -27,7 +27,7 @@ The best way to actually do source separation (blind or non-blind) is to be a li
 
 Possibly the best non-living-animal way to do (non-blind) source separation is to have control of how you make the recording, and never mix the sounds together in the first place. A recording studio is set up to do just this; the singer goes into an isolation booth to record themselves, isolated from the rest of the band. Similarly, with the clarinetist, and the string section: they each have a microphone and recording track dedicated to record the isolated sound that comes from each of their instruments. Then later the sound engineer can control the volume of each of these instruments individually, without affecting the volume of any other instrument.
 
-We're going to assume we don't have access to the original isolated sources and can't record the separated sounds from a living brain. In this case, we have a mixture of sounds  in a stereo or mono recording that we wish to separate. When we have no information about how the mixture was recorded or about what the sources sound like, we call the process of doing source separation, _Blind_ [2] Source Separation or BSS. When researchers say “source separation” they are often referring to blind source separation. Likewise, in this blog, you can assume that, when we say source separation, we really mean blind source separation (unless otherwise noted).
+We're going to assume we don't have access to the original isolated sources and can't record the separated sounds from a living brain. In this case, we have a mixture of sounds  in a stereo or mono recording that we wish to separate. When we have no information about how the mixture was recorded or about what the sources sound like, we call the process of doing source separation, _Blind_ <a id="footnote-2-ref" href="#footnote-2">[2]</a> Source Separation or BSS. When researchers say “source separation” they are often referring to blind source separation. Likewise, in this blog, you can assume that, when we say source separation, we really mean blind source separation (unless otherwise noted).
 
 ## Why is Source Separation important?
 
@@ -41,7 +41,7 @@ Another compelling reason that we do this research—at least from a philosophic
 
 ## What is a stream? What is a source?
 
-Above, we refer to individual sonic _"streams"_ [3], a term popularized by psychologist Albert Bregman; by _"stream"_ we mean a set of connected auditory events. Often these are from the same sound source. Consider for a second, the sound of footsteps, or even a sentence. Each footstep is discreet, but they are all from the same source and go together. Similarly, the individual words in a sentence spoken aloud are typically grouped together, even if there is silence between words. A single note is just a note, but many notes ordered in a particular way can create a violin solo, or back beat. 
+Above, we refer to individual sonic _"streams"_ <a id="footnote-3-ref" href="#footnote-3">[3]</a>, a term popularized by psychologist Albert Bregman; by _"stream"_ we mean a set of connected auditory events. Often these are from the same sound source. Consider for a second, the sound of footsteps, or even a sentence. Each footstep is discreet, but they are all from the same source and go together. Similarly, the individual words in a sentence spoken aloud are typically grouped together, even if there is silence between words. A single note is just a note, but many notes ordered in a particular way can create a violin solo, or back beat. 
  
 
 We now examine what a **source** _is_ and what it _is not_. While it may seem obvious, at first, the definition of “a source” is ill-defined. For instance, consider a guitar-bass-drums trio. The guitar playing a solo seems like a single source, while the bass player and drummer are also individual sources, but doesn't a guitar have five strings? Couldn't they each be considered a source? How about each of the individual drums on the drumset. What if the trio's song is playing on the radio at a cocktail party? Then the radio might be one source, and each individual talker might be a source too. We could go on and on and on…
@@ -64,7 +64,7 @@ The way sound is captured by a computer is by using a microphone to turn those a
 
 Once the sound is in the computer, it is stored as an array of numbers. We can think of this as a function, \\(f [t]\\), that outputs a value at a given discreet-valued timestep, \\(t\\). So the sound pictured above is stored as such:
 
-\\[ f[t] = \\\\[-1, 0, 1, 1, 3, 4, 3, ...\\\\] \\]
+\\[ f[t] = \\\[-1, 0, 1, 1, 3, 4, 3, ...\\\] \\]
 
 A mixture is a typically a linear combination of sounds with some mixing parameter that scales the sound and determines how loud the sound is. For instance, let’s say we have a mixture, \\(m[t]\\), is a combination of two sources, \\(s_1[t]\\) and \\(s_2[t]\\), with mixing parameters \\(l_1\\) and \\(l_2\\), respectively. Then \\(m[t]\\) is thusly:
 
@@ -72,11 +72,11 @@ A mixture is a typically a linear combination of sounds with some mixing paramet
 
 Both \\(s_1[t]\\) and \\(s_2[t]\\) are time series just like \\(m[t]\\) and \\(f[t]\\). But we only know what the resultant mixture looks like:
 
-\\[ m[t] = \\\\[12, 85, 123, -6, -45, 3, ...\\\\] \\]
+\\[ m[t] = \\\[12, 85, 123, -6, -45, 3, ...\\\] \\]
 
 Now we get to the crux of the problem: how do we determine what \\(s_1[t]\\) and \\(s_2[t]\\) are when we only know what our mixture, \\(m[t]\\), is? This problem can be simplified by looking at the first value in the mixture, \\(m[t=0] = 12\\) and assume our mixing parameters are both 1. Now, we’re merely to trying to figure out what two (scaled) integers sum to 12, i.e., what are \\(s_1[t=0]\\) and \\(s_2[t=0]\\) such that \\(s_1[0] + s_2[0] = 12\\)? The number of possible pairs that sum to the value \\(m[0]\\) is infinite but only one pair is correct!
 
-But uncompressed CD-quality audio is stored as 16-bit integers and sampled at 44.1 kHz. If we limit the range of possible values that our sources can be as such both sources are 16-bits, i.e., can be any value between -32768 and 32767, inclusive[4]. So now our underdetermined source separation toy problem has moved away from the realm of the impossible and into the land of the prohibitively difficult. Keep in mind that once we figure out the right pair for t=0, we still have to find the correct pair for 44,099 other mixture values in order to separate a single second of our mixture! Additionally, we’re only trying to separate two sources; most music has more than two sources, and in that case, the problem becomes “what 3/4/5/… numbers add up to X?” Clearly this is an impractical way to go about this problem.
+But uncompressed CD-quality audio is stored as 16-bit integers and sampled at 44.1 kHz. If we limit the range of possible values that our sources can be as such both sources are 16-bits, i.e., can be any value between -32768 and 32767, inclusive<a id="footnote-4-ref" href="#footnote-4">[4]</a>. So now our underdetermined source separation toy problem has moved away from the realm of the impossible and into the land of the prohibitively difficult. Keep in mind that once we figure out the right pair for t=0, we still have to find the correct pair for 44,099 other mixture values in order to separate a single second of our mixture! Additionally, we’re only trying to separate two sources; most music has more than two sources, and in that case, the problem becomes “what 3/4/5/… numbers add up to X?” Clearly this is an impractical way to go about this problem.
 
 What do researchers do when they’ve hit an impasse? Make [assumptions](https://en.wikipedia.org/wiki/Spherical_cow )! There is clearly no general solution to this underdetermined problem, so researchers develop algorithms that make assumptions about the mixtures they are separating. These assumptions are woven into the fabric of the algorithms; they power the separation at a very fundamental level. The assumptions are based on things like timbre (the inherent characteristic of a sound), spatialization (where a sound is “located” in a mixture), following a melody, knowing that sources enter or exit, musical structure, etc. Making assumptions also means that those assumptions can and will fail, but understanding the assumptions means understanding the strengths and limitations of these algorithms.
 
@@ -90,10 +90,18 @@ So now we’ve laid some groundwork for what source separation is and why it’s
 <br />
 <br />
 
-[1] Web player by [Bastien Liutkus](http://www.binarymind.org) from [here](https://github.com/binarymind/multitrackHTMLPlayer).
+<p id="footnote-1">
+	[1] Web player by [Bastien Liutkus](http://www.binarymind.org) from [here](https://github.com/binarymind/multitrackHTMLPlayer). <a href="#footnote-1-ref">&#8617;</a>
+</p>
 
-[2] The irony of calling an auditory process “blind” is not lost on this researcher.
+<p id="footnote-2">
+	[2] The irony of calling an auditory process “blind” is not lost on this researcher. <a href="#footnote-2-ref">&#8617;</a>
+</p>
 
-[3] Bregman, Albert S. _Auditory scene analysis: The perceptual organization of sound_. MIT press, 1994.
+<p id="footnote-3">
+	[3] Bregman, Albert S. _Auditory scene analysis: The perceptual organization of sound_. MIT press, 1994. <a href="#footnote-3-ref">&#8617;</a>
+</p>
 
-[4] We leave it to the combinatorics experts to figure out how many possible integer pair solutions there are within a 16-bit space.
+<p id="footnote-4">
+	[4] We leave it to the combinatorics experts to figure out how many possible integer pair solutions there are within a 16-bit space. <a href="#footnote-4-ref">&#8617;</a>
+</p>
