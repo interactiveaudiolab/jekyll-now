@@ -64,7 +64,7 @@ The way sound is captured by a computer is by using a microphone to turn those a
 
 Once the sound is in the computer, it is stored as an array of numbers. We can think of this as a function, \\(f [t]\\), that outputs a value at a given discreet-valued timestep, \\(t\\). So the sound pictured above is stored as such:
 
-\\[ f[t] = \\\[-1, 0, 1, 1, 3, 4, 3, ...\\\] \\]
+$$ f[t] = \[-1, 0, 1, 1, 3, 4, 3, ...\] $$
 
 A mixture is a typically a linear combination of sounds with some mixing parameter that scales the sound and determines how loud the sound is. For instance, let’s say we have a mixture, \\(m[t]\\), is a combination of two sources, \\(s_1[t]\\) and \\(s_2[t]\\), with mixing parameters \\(l_1\\) and \\(l_2\\), respectively. Then \\(m[t]\\) is thusly:
 
@@ -72,7 +72,7 @@ A mixture is a typically a linear combination of sounds with some mixing paramet
 
 Both \\(s_1[t]\\) and \\(s_2[t]\\) are time series just like \\(m[t]\\) and \\(f[t]\\). But we only know what the resultant mixture looks like:
 
-\\[ m[t] = \\\[12, 85, 123, -6, -45, 3, ...\\\] \\]
+\\[ m[t] = \[12, 85, 123, -6, -45, 3, ...\] \\]
 
 Now we get to the crux of the problem: how do we determine what \\(s_1[t]\\) and \\(s_2[t]\\) are when we only know what our mixture, \\(m[t]\\), is? This problem can be simplified by looking at the first value in the mixture, \\(m[t=0] = 12\\) and assume our mixing parameters are both 1. Now, we’re merely to trying to figure out what two (scaled) integers sum to 12, i.e., what are \\(s_1[t=0]\\) and \\(s_2[t=0]\\) such that \\(s_1[0] + s_2[0] = 12\\)? The number of possible pairs that sum to the value \\(m[0]\\) is infinite but only one pair is correct!
 
@@ -91,7 +91,7 @@ So now we’ve laid some groundwork for what source separation is and why it’s
 <br />
 
 <p id="footnote-1">
-	[1] Web player by [Bastien Liutkus](http://www.binarymind.org) from [here](https://github.com/binarymind/multitrackHTMLPlayer). <a href="#footnote-1-ref">&#8617;</a>
+  [1] Web player by <a href="http://www.binarymind.org">Bastien Liutkus</a> from <a href="https://github.com/binarymind/multitrackHTMLPlayer">here</a>. <a href="#footnote-1-ref">&#8617;</a>
 </p>
 
 <p id="footnote-2">
@@ -99,7 +99,7 @@ So now we’ve laid some groundwork for what source separation is and why it’s
 </p>
 
 <p id="footnote-3">
-	[3] Bregman, Albert S. _Auditory scene analysis: The perceptual organization of sound_. MIT press, 1994. <a href="#footnote-3-ref">&#8617;</a>
+  [3] Bregman, Albert S. <i>Auditory scene analysis: The perceptual organization of sound</i>. MIT press, 1994. <a href="#footnote-3-ref">&#8617;</a>
 </p>
 
 <p id="footnote-4">
