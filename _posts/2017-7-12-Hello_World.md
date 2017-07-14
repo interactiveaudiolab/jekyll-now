@@ -8,7 +8,16 @@ published: true
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-Hello World! We are happy to present the _nussl blog_, wherein we will provide a tutorial on many of the blind source separation algorithms contained within the Northwestern University Source Separation Library (`nussl`), an open-source source separation package. Usually, the blog posts will have code sprinkled throughout them, to root the concepts in real-world examples. But before we proceed onto explanations of the algorithms, we’d like to spend this post defining what “blind source separation” is and why it’s important. 
+Hello World! We are happy to present the _nussl blog_, wherein we will provide a tutorial on many of the blind source separation algorithms contained within the Northwestern University Source Separation Library (`nussl`), an open-source source separation package. Usually, the blog posts will have code sprinkled throughout them, to root the concepts in real-world examples. But before we proceed onto explanations of the algorithms, we’d like to spend this post defining what “blind source separation” is and why it’s important.
+
+## Table of Contents
+<ul>
+  <li><a href="#what-is-blind-source-separation">What is Blind Source Separation?</a></li>
+  <li><a href="#why-is-source-separation-important">Why is Source Separation importatnt?</a></li>
+  <li><a href="#what-is-a-stream-what-is-a-source">What is a stream? What is a source?</a></li>
+  <li><a href="#underdetermined-source-separation">Underdetermined Source Separation</a></li>
+  <li><a href="#onward">Onward!</a></li>
+</ul>
 
 ## What is Blind Source Separation?
 
